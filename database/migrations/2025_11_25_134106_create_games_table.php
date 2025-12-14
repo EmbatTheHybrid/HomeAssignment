@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->string('image_path');
             $table->enum('player_type', PlayerType::getValues());
             $table->decimal('price', total: 5, places: 2);
             $table->foreignId('developer_id')->constrained()->onDelete('cascade');

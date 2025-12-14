@@ -1,0 +1,140 @@
+body {
+	font-family: 'Varela Round', sans-serif;
+	background: #2A475E;
+background: linear-gradient(180deg, rgba(42, 71, 94, 1) 0%, rgba(29, 44, 61, 1) 50%, rgba(27, 40, 56, 1) 100%);
+}
+
+html {
+	min-height: 100%;
+}
+
+.navbar {
+	background: #171D25;
+	-moz-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+	box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
+	padding: 10px 16px;
+}
+
+.navbar .navbar-brand {
+	font-weight: bold;
+	letter-spacing: -1px;
+	font-size: 20px;
+	color: #fff;
+}
+
+.navbar-brand:hover {
+	color: #fff !important;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+    color: #DCDEDF;
+}
+
+.nav-white {
+	color: #DCDEDF !important;
+}
+
+.nav-white:hover {
+	color: #fff !important;
+}
+
+.fileinput {
+	text-align: center;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+
+ul.pagination {
+	margin-bottom: 0;
+}
+
+.card-title {
+    color: #DCDEDF;
+    background: #435d7d;
+    padding: 16px 20px;
+}
+
+.card-header {
+	background-color: #1B2838;
+}
+
+.row-detail, thead > tr {
+	background-color: #22394B !important;
+	color: #C4D2DE;
+	border: none !important;
+}
+
+.row-detail {
+	line-height: 3rem;
+}
+
+.row-detail > td {
+	font-size: 1rem;
+}
+
+.row-detail:nth-child(1) {
+	background-color: #22394B !important;
+}
+
+.row-detail:nth-child(2) {
+	background-color: #203647 !important;
+}
+
+.row-detail:nth-child(3) {
+	background-color: #1E3243 !important;
+}
+
+.row-detail:nth-child(4) {
+	background-color: #1D2F3F !important;
+}
+
+.row-detail:nth-child(5) {
+	background-color: #1B2B3A !important;
+}
+
+.row-detail:nth-child(6) {
+	background-color: #192635 !important;
+}
+
+.row-detail:nth-child(7) {
+	background-color: #172432 !important;
+}
+
+.row-detail:nth-child(8) {
+	background-color: #16212E !important;
+}
+
+.row-detail:nth-child(9) {
+	background-color: #16202D !important;
+}
+
+.row-detail:nth-child(10) {
+	background-color: #16202D !important;
+}
+
+.row-detail:hover {
+	background-color: #AED1E6 !important;
+	color: #1C242A !important;
+}
+
+.card {
+	background-color: transparent;
+}
+
+table {
+	border-collapse:separate; 
+  border-spacing: 0 0.5rem;
+}
+
+table, .card, tbody, thead, tr, td, th {
+	border: none !important;
+}
