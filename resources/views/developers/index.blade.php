@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card">
+                    <div class="card card-trans">
                         <div class="card-header card-title">
                             <div class="d-flex align-items-center">
                                 <h2 class="mb-0">All Developers</h2>
@@ -39,6 +39,7 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,6 +50,7 @@
                                         <tr class="row-detail">
                                             <th scope="row">{{ $index + 1 }}</th>
                                             <td>{{ $entry->name }}</td>
+                                            <td>{{ $entry->email }}</td>
                                             {{-- <td width="150">
                                                 <a href="{{ route('categories.show', $entry->id) }}"
                                                     class="btn btn-sm btn-circle btn-outline-info" title="Show"><i

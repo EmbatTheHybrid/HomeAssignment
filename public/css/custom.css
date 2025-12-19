@@ -74,7 +74,7 @@ ul.pagination {
 }
 
 .row-detail {
-	line-height: 3rem;
+	line-height: 2rem;
 }
 
 .row-detail > td {
@@ -126,7 +126,7 @@ ul.pagination {
 	color: #1C242A !important;
 }
 
-.card {
+.card-trans {
 	background-color: transparent;
 }
 
@@ -134,7 +134,47 @@ table {
 	border-collapse:separate; 
   border-spacing: 0 0.5rem;
 }
-
 table, .card, tbody, thead, tr, td, th {
 	border: none !important;
+}
+
+option, select {
+	background-color: #3D4450 !important;
+	color: #DCDEDF !important;
+	border-color: #1B2838 !important;
+}
+
+#image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#image > img {
+	display: block;
+	margin: auto;
+	object-fit:scale-down;
+	object-position: center;
+}
+
+.split {
+	display: flex;
+	flex-direction: row;
+}
+
+.card-categories {
+	background-color: #4B5765;
+}
+
+.category-container {
+	background-color: #4B5765;
+	box-shadow: 10px 2px 28px 0px rgba(0,0,0,0.25);
+-webkit-box-shadow: 10px 2px 28px 0px rgba(0,0,0,0.25);
+-moz-box-shadow: 10px 2px 28px 0px rgba(0,0,0,0.25);
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1250px;
+  }
 }

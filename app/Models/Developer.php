@@ -9,6 +9,11 @@ class Developer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'email'
+    ];
+
     public function games()
     {
         return $this->hasMany(Game::class);
