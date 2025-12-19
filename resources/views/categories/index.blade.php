@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="card">
+                    <div class="card card-trans">
                         <div class="card-header card-title">
                             <div class="d-flex align-items-center">
                                 <h2 class="mb-0">All Categories</h2>
