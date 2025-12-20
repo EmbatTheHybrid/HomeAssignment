@@ -7,11 +7,16 @@ use App\Models\Game;
 use App\Models\Category;
 use App\Models\Developer;
 use App\Enums\PlayerType;
+use Illuminate\Validation\Rule;
+use BenSampo\Enum\Rules\EnumKey;
+use Illuminate\Support\Facades\Storage;
 
 
 
 class GameController extends Controller
 {
+     
+
     function index() {
         $games = Game::all();
         $types =  PlayerType::asArray();
@@ -19,11 +24,15 @@ class GameController extends Controller
         array_unshift($types, "All");
         $developerOwned = [];
 
+        
         $icons = [
             "action" => "fa-solid fa-hand-fist",
             "strategy" => "fa-solid fa-chess-pawn",
-            "adventure" => "fa-solid fa-map"
+            "adventure" => "fa-solid fa-map",
+            "cozy" => "fa-solid fa-bahai",
+            "shmup" => "fa-brands fa-space-awesome"
         ];
+       
 
         foreach ($games as $game) {
             $developer = Developer::where('id','=',$game->developer_id)->first();
@@ -36,12 +45,53 @@ class GameController extends Controller
     }
 
     function create() {
-        return view('games.create');
+        $types =  PlayerType::asArray();
+        $categories = Category::orderBy('name')->get();
+        $developers = Developer::orderBy('name')->pluck('name', 'id');
+
+        return view('games.create', compact('types', 'developers', 'categories'));
+    }
+
+    function store(Request $request) {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:100',
+            'description' => 'required|string|max:255',
+            'price' => 'required|decimal:0,2',
+            'player_type' => ['required', new EnumKey(PlayerType::class)],
+            'categories' => 'required',
+            'developer_id' => 'required|exists:developers,id',
+            'image_icon' => 'mimetypes:image/jpeg',
+            'image_main' => 'mimetypes:image/jpeg',
+            'video_main' => 'mimetypes:video/mp4'
+        ]);
+        // dd($validatedData);
+        
+        $data = collect($validatedData)->only(['name', 'description', 'price', 'player_type', 'developer_id', 'categories'])->toArray();
+        $baseName = str_replace(' ', '', preg_replace('/[^a-z0-9 ]/i', '', strtolower($data['name'])));
+        $data['image_path'] = $baseName;
+        
+        
+        $request->file('image_icon')->storeAs('public/images', $baseName . '_icon.' . $request->file('image_icon')->extension());
+        $request->file('image_main')->storeAs('public/images', $baseName . '_main.' . $request->file('image_main')->extension());
+        $request->file('video_main')->storeAs('public/videos', $baseName . '_video.' . $request->file('video_main')->extension());
+        
+        $categories = array_values($data['categories']);
+
+        $game = Game::create($data);
+        $game->categories()->attach($categories);
+
+        return redirect('/games');
     }
 
     function show($id) {
         $game = Game::find($id);
-        return view('developers.show', compact("game"));
+        return view('games.show', compact("game"));
+    }
+
+    function delete($id) {
+        $game = Game::find($id);
+        $game->delete();
+        return redirect('/games');
     }
 
 }

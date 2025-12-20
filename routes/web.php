@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\StorageController;
 
 
 /*
@@ -22,11 +23,16 @@ Route::redirect('/', '/games');
 Route::get('/games', [GameController::class, 'index'])->name('games.index');
 Route::get('/games/create', [GameController::class, 'create'])->name('games.create');
 Route::get('/games/{id}', [GameController::class, 'show'])->name('games.show');
+Route::post('/games', [GameController::class, 'store'])->name('games.store');
+Route::delete('/games/{id}', [GameController::class, 'delete'])->name('games.delete');
 
 Route::get('/developers', [DeveloperController::class, 'index'])->name('developers.index');
 Route::get('/developer/create', [DeveloperController::class, 'create'])->name('developers.create');
 Route::get('/developers/{id}', [DeveloperController::class, 'show'])->name('developers.show');
+Route::post('/developers', [DeveloperController::class, 'store'])->name('developers.store');
+Route::delete('/developers/{id}', [DeveloperController::class, 'delete'])->name('developers.delete');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+
 
 

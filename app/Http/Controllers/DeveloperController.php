@@ -22,4 +22,21 @@ class DeveloperController extends Controller
         $developer = Developer::find($id);
         return view('developers.show', compact("developer"));
     }
+
+    function store(Request $request) {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255'
+        ]);
+
+        Developer::create($validatedData);
+
+        return redirect('/developers');
+    }
+
+    function delete($id) {
+        $developer = Developer::find($id);
+        $developer->delete();
+        return redirect('/developers');
+    }
 }

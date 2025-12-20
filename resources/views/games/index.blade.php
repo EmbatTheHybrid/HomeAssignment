@@ -9,6 +9,7 @@
 						<div class="card-header card-title">
 							<div class="d-flex align-items-start">
 								<h2 class="mb-0"> Categories</h2>
+                                
 							</div>
 						</div>
 						<div class="card-body">
@@ -28,8 +29,8 @@
                             <div class="d-flex align-items-center">
                                 <h2 class="mb-0">Games Catalog</h2>
                                 <div class="ml-auto">
-                                    {{-- <a href="{{ route('C.create') }}" class="btn btn-success"><i
-                                            class="fa fa-plus-circle"></i> Add New</a> --}}
+                                    <a href="{{ route('games.create') }}" class="btn btn-primary"><i
+                                            class="fa fa-plus-circle"></i> Add New</a> 
                                 </div>
                             </div>
                         </div>
@@ -68,8 +69,8 @@
 
                                 @if ($games->count())
                                     @foreach ($games as $index => $entry)
-                                        <tr class="row-detail" onclick="window.location='{{route('games.show', ['id'=> $entry->id])}}'" style="cursor: pointer;">
-                                            <th id="image"><img width="180" height="90" src="{{ asset('images/'.$entry->image_path) }}"></th>
+                                        <tr class="row-detail" onclick="window.location='{{route('games.show', $entry->id)}}'" style="cursor: pointer;">
+                                            <th id="image"><img width="180" height="90" src="{{ asset('storage/images/'.$entry->image_path.'_icon.jpg') }}"></th>
                                             <td>
                                                 {{ $entry->name }}
                                                 <br>
@@ -79,10 +80,10 @@
                                             </td>
 											<td>{{ $entry->description }}</td><td>{{ $entry->player_type }}</td>
 											<td>${{ $entry->price }}</td>
-											<td>{{ $developerOwned[$index] }}</td>
+											<td>{{ $entry->developer->name }}</td>
 											
-                                            {{-- <td width="150">
-                                                <a href="{{ route('categories.show', $entry->id) }}"
+                                            <!-- <td width="150">
+                                                <a href="{{ route('games.show', $entry->id) }}"
                                                     class="btn btn-sm btn-circle btn-outline-info" title="Show"><i
                                                         class="fa fa-eye"></i></a>
                                                  <a href="form.html" class="btn btn-sm btn-circle btn-outline-secondary"
@@ -90,7 +91,7 @@
                                                 <a href="#" class="btn btn-sm btn-circle btn-outline-danger"
                                                     title="Delete" onclick="confirm('Are you sure?')"><i
                                                         class="fa fa-times"></i></a>
-                                            </td> --}}
+                                            </td> -->
                                         </tr>
                                     @endforeach
                                 @endif

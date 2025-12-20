@@ -10,8 +10,8 @@
                             <div class="d-flex align-items-center">
                                 <h2 class="mb-0">All Developers</h2>
                                 <div class="ml-auto">
-                                    {{-- <a href="{{ route('C.create') }}" class="btn btn-success"><i
-                                            class="fa fa-plus-circle"></i> Add New</a> --}}
+                                    <a href="{{ route('developers.create') }}" class="btn btn-success"><i
+                                            class="fa fa-plus-circle"></i> Add New</a> 
                                 </div>
                             </div>
                         </div>
@@ -40,6 +40,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,18 +52,23 @@
                                             <th scope="row">{{ $index + 1 }}</th>
                                             <td>{{ $entry->name }}</td>
                                             <td>{{ $entry->email }}</td>
-                                            {{-- <td width="150">
-                                                <a href="{{ route('categories.show', $entry->id) }}"
+                                            <td width="150">
+                                                <a href="{{ route('developers.show', $entry->id) }}"
                                                     class="btn btn-sm btn-circle btn-outline-info" title="Show"><i
                                                         class="fa fa-eye"></i></a>
                                                  <a href="form.html" class="btn btn-sm btn-circle btn-outline-secondary"
                                                     title="Edit"><i class="fa fa-edit"></i></a>
-                                                <a href="#" class="btn btn-sm btn-circle btn-outline-danger"
-                                                    title="Delete" onclick="confirm('Are you sure?')"><i
+                                                <a href="{{ route('developers.delete', $entry->id)}}" class="btn btn-delete btn-sm btn-circle btn-outline-danger"
+                                                    title="Delete"><i
                                                         class="fa fa-times"></i></a>
-                                            </td> --}}
+                                            </td> 
                                         </tr>
                                     @endforeach
+
+                                    <form id="delete-form" action="" method="POST", style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 @endif
                             </tbody>
                         </table>

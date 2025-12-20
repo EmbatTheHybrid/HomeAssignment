@@ -173,6 +173,15 @@ option, select {
 -moz-box-shadow: 10px 2px 28px 0px rgba(0,0,0,0.25);
 }
 
+.game-category {
+	color: #65BDF0;
+	background-color: #2B495F;
+}
+
+.game-btn {
+	width: 32.975%;
+}
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1250px;
