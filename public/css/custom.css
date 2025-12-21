@@ -27,8 +27,8 @@ html {
 	color: #fff !important;
 }
 
-.navbar-light .navbar-nav .active>.nav-link {
-    color: #DCDEDF;
+.navbar-light .navbar-nav, .active>.nav-link {
+    color: #DCDEDF !important;
 }
 
 .nav-white {
@@ -67,7 +67,7 @@ ul.pagination {
 	background-color: #1B2838;
 }
 
-.row-detail, thead > tr {
+.row-detail, thead > tr, .card-body {
 	background-color: #22394B !important;
 	color: #C4D2DE;
 	border: none !important;
@@ -138,7 +138,7 @@ table, .card, tbody, thead, tr, td, th {
 	border: none !important;
 }
 
-option, select {
+option, select, input {
 	background-color: #3D4450 !important;
 	color: #DCDEDF !important;
 	border-color: #1B2838 !important;
@@ -173,13 +173,56 @@ option, select {
 -moz-box-shadow: 10px 2px 28px 0px rgba(0,0,0,0.25);
 }
 
+.game {
+	background: #182331;
+background: linear-gradient(90deg, rgba(24, 35, 49, 1) 0%, rgba(14, 21, 30, 1) 100%);
+}
+
 .game-category {
 	color: #65BDF0;
 	background-color: #2B495F;
 }
 
+.game-category:hover {
+	color: #FAFAFA;
+	background: #64BBED;
+	background: linear-gradient(90deg, rgba(100, 187, 237, 1) 0%, rgba(87, 163, 207, 1) 50%, rgba(71, 134, 170, 1) 100%);
+}
+
 .game-btn {
 	width: 32.975%;
+}
+
+.info-click {
+	color: #67C1F5;
+	text-decoration: none !important;
+}
+
+.info-click:hover {
+	color: #FAFAFA;
+}
+
+.text-white {
+	color: #FAFAFA !important;
+}
+
+.text-white-2 {
+	color: #DCDEDF !important;
+}
+
+.text-muted-game {
+	color: #8F98A0 !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }
 
 @media (min-width: 1200px) {

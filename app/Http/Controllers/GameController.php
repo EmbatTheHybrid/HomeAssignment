@@ -78,7 +78,7 @@ class GameController extends Controller
         $categories = array_values($data['categories']);
 
         $game = Game::create($data);
-        $game->categories()->attach($categories);
+        $game->categories()->sync($categories);
 
         return redirect('/games');
     }
@@ -92,6 +92,34 @@ class GameController extends Controller
         $game = Game::find($id);
         $game->delete();
         return redirect('/games');
+    }
+
+    function edit($id) {
+        $types =  PlayerType::asArray();
+        $categories = Category::orderBy('name')->get();
+        $developers = Developer::orderBy('name')->pluck('name', 'id');
+        $game = Game::find($id);
+
+        return view('games.edit', compact('types', 'developers', 'categories', 'game'));
+    }
+
+    function update($game_id) {
+        $validatedData = request()->validate([
+            'name' => 'required|string|max:100',
+            'description' => 'required|string|max:255',
+            'price' => 'required|decimal:0,2',
+            'player_type' => ['required', new EnumKey(PlayerType::class)],
+            'categories' => 'required',
+            'developer_id' => 'required|exists:developers,id'
+        ]);
+
+        $game = Game::find($game_id);
+        $game->update($validatedData);
+
+        $categories = array_values($validatedData['categories']);
+        $game->categories()->sync($categories);
+
+        return redirect('/games'.'/'.$game_id);
     }
 
 }

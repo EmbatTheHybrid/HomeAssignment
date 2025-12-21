@@ -34,6 +34,23 @@ class DeveloperController extends Controller
         return redirect('/developers');
     }
 
+    function edit($id) {
+        $developer = Developer::find($id);
+        return view('developers.edit', compact('developer'));
+    }
+
+    function update($id) {
+        $validatedData = request()->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255'
+        ]);
+
+        $developer = Developer::find($id);
+        $developer->update($validatedData);
+
+        return redirect('/developers' . '/' . $id);
+    }
+
     function delete($id) {
         $developer = Developer::find($id);
         $developer->delete();

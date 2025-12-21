@@ -16,7 +16,6 @@
 							<div class="p-2 category-container">
 								 @foreach($categories as $category)
 									<p class="nav-white">{{$category->name}} <i class="{{ isset($icons[strtolower($category->name)]) ? $icons[strtolower($category->name)] : "fa-solid fa-question" }}"></i></p>
-                                   
 								@endforeach
 							</div>
 							
