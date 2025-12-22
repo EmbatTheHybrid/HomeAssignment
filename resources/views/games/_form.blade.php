@@ -1,7 +1,7 @@
 <?php
     $name = isset($game) ? $game->name : old('name');
     $description = isset($game) ? $game->description : old('description');
-    $categories_select = isset($game) ? $game->categories->pluck('id') : old('categories[]');
+    $categories_select = isset($game) ? $game->categories->pluck('id')->toArray() : old('categories[]');
     $player_type = isset($game) ? $game->player_type : old('player_type');
     $price = isset($game) ? $game->price : old('price');
     $developer_id = isset($game) ? $game->developer_id : old('developer_id');
@@ -42,7 +42,7 @@
         <div class="col-md-9 row">
             @foreach($categories as $index => $category)
                 <div class="col-md-4">
-                    <input type="checkbox" name="categories[]" {{in_array($category->id, $categories_select->toArray()) ? 'checked' : ''}} value="{{$category->id}}" id="{{$index}}">
+                    <input type="checkbox" name="categories[]" {{in_array($category->id, ($categories_select ?? [])) ? 'checked' : ''}} value="{{$category->id}}" id="{{$index}}">
                     <label for="{{$index}}">{{$category->name}}</label>
                     <br>
                 </div>

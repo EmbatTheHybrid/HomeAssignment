@@ -24,6 +24,28 @@ class GameController extends Controller
         array_unshift($types, "All");
         $developerOwned = [];
 
+        // $validated = request()->validate([
+        //     'player_type' => ['required', new EnumKey(PlayerType::class)],
+        // ]);
+
+
+
+        // dd($validated);
+        $request = request();
+
+        if ($request->has("s_categories")) {
+            $games = Game::whereHas('categories', function($query) use($request) {
+                $query->whereIn('categories.id', $request->input('s_categories'));
+            }, '=', count($request->input('s_categories')))->get();
+        };
+        
+        if ($request->has("player_type") && $request->input('player_type') != 'All') {
+            // dd(gettype(PlayerType::fromKey($request->input("player_type"))));
+            $games = $games->where('player_type', '=', PlayerType::fromValue($request->input('player_type')));
+        }
+
+        
+
         
         $icons = [
             "action" => "fa-solid fa-hand-fist",
@@ -40,6 +62,8 @@ class GameController extends Controller
 
             // Get category icons
         };
+
+
 
         return view('games.index', compact("games", "types", 'developerOwned', 'categories', 'icons'));
     }
