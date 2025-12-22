@@ -10,7 +10,7 @@ use App\Enums\PlayerType;
 use Illuminate\Validation\Rule;
 use BenSampo\Enum\Rules\EnumKey;
 use Illuminate\Support\Facades\Storage;
-
+use ColumnSortable;
 
 
 class GameController extends Controller
@@ -18,7 +18,7 @@ class GameController extends Controller
      
 
     function index() {
-        $games = Game::all();
+        $games = Game::sortable()->paginate(10);
         $types =  PlayerType::asArray();
         $categories = Category::all();
         array_unshift($types, "All");

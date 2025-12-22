@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Game extends Model
 {
     use HasFactory;
+    use Sortable;
 
     protected $fillable = [
         'name',
@@ -16,6 +18,11 @@ class Game extends Model
         'player_type',
         'image_path',
         'developer_id'
+    ];
+
+    protected $sortable = [
+        'name',
+        'price',
     ];
 
     public function categories() {

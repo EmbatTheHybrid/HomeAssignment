@@ -10,7 +10,8 @@ class DeveloperController extends Controller
     //
 
     function index() {
-        $developers = Developer::all();
+        $developers = Developer::sortable()->paginate(10);
+
         return view('developers.index', compact("developers"));
     }
 

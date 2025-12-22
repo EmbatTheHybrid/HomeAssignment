@@ -38,7 +38,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">@sortablelink('name', 'Name')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,7 +48,7 @@
                                     @foreach ($categories as $index => $entry)
                                         <tr class="row-detail">
                                             <th scope="row">{{ $index + 1 }}</th>
-                                            <td>{{ $entry->name }}</td>
+                                            <td scope="row" class="w-75">{{ $entry->name }}</td>
                                             {{-- <td width="150">
                                                 <a href="{{ route('categories.show', $entry->id) }}"
                                                     class="btn btn-sm btn-circle btn-outline-info" title="Show"><i
@@ -61,14 +61,17 @@
                                             </td> --}}
                                         </tr>
                                     @endforeach
+
+                                    
                                 @endif
                             </tbody>
                         </table>
-
-
+                        {!! $categories->links('pagination::bootstrap-5') !!}
+                        
                     </div>
                 </div>
             </div>
+            {{-- {!! $categories->appends(\Request::except('page'))->render() !!} --}}
         </div>
         </div>
     </main>

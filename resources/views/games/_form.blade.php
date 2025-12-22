@@ -10,6 +10,7 @@
     $video_main = isset($game) ? asset('storage/videos/'.$game->image_path.'_video.mp4') : old('video_main');
 ?>
 
+<p>{{$errors}}</p>
 <div class="row">
     <div class="col-md-12">
     <div class="form-group row">

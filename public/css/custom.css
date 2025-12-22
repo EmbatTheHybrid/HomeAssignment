@@ -67,10 +67,18 @@ ul.pagination {
 	background-color: #1B2838;
 }
 
-.row-detail, thead > tr, .card-body {
+.row-detail, thead > tr, .card-body, th > a {
 	background-color: #22394B !important;
 	color: #C4D2DE;
 	border: none !important;
+}
+
+th > a:hover {
+	color: #67C1F5;
+}
+
+input[type=checkbox] {
+	accent-color: #67C1F5;
 }
 
 .row-detail {
@@ -223,6 +231,10 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
+}
+
+.page-item {
+	color: black !important;
 }
 
 @media (min-width: 1200px) {

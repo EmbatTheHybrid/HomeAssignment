@@ -63,11 +63,12 @@
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
+                                    
                                     <th scope="col"></th>
-                                    <th scope="col">Name</th>
+                                    <th scope="col">@sortablelink('name', 'Name')</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Player Type</th>
-                                    <th scope="col">Price</th>
+                                    <th scope="col">@sortablelink('price', 'Price')</th>
                                     <th scope="col">Developer</th>
                                 </tr>
                             </thead>
@@ -107,6 +108,8 @@
                                                     </td> -->
                                         </tr>
                                     @endforeach
+
+                                    {{-- {!! $games->appends(\Request::except('page'))->render() !!} --}}
                                 @endif
                             </tbody>
                         </table>
