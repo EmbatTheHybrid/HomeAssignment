@@ -70,7 +70,7 @@
     </div>
 
     <div class="form-group row">
-        <label for="price" class="col-md-3 col-form-label" >Price</label>
+        <label for="price" class="col-md-3 col-form-label">Price ($)</label>
         <div class="col-md-9">
             <input type="number" name="price" id="price" value="{{$price}}" step=".01" class="form-control @error('price') is-invalid @enderror">
             @error('price')
