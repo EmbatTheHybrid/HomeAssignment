@@ -56,7 +56,7 @@
                                                 <a href="{{ route('developers.show', $entry->id) }}"
                                                     class="btn btn-sm btn-circle btn-outline-info" title="Show"><i
                                                         class="fa fa-eye"></i></a>
-                                                 <a href="form.html" class="btn btn-sm btn-circle btn-outline-secondary"
+                                                 <a href="{{ route('developers.edit', $entry->id)}}" class="btn btn-sm btn-circle btn-outline-secondary"
                                                     title="Edit"><i class="fa fa-edit"></i></a>
                                                 <a href="{{ route('developers.delete', $entry->id)}}" class="btn btn-delete btn-sm btn-circle btn-outline-danger"
                                                     title="Delete"><i

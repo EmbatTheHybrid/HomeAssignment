@@ -10,7 +10,6 @@
     $video_main = isset($game) ? asset('storage/videos/'.$game->image_path.'_video.mp4') : old('video_main');
 ?>
 
-<p>{{$errors}}</p>
 <div class="row">
     <div class="col-md-12">
     <div class="form-group row">
@@ -48,6 +47,11 @@
                     <br>
                 </div>
             @endforeach
+            @error('categories')
+             <div class="invalid-feedback">
+                {{$message}}
+            </div>
+        @enderror
             {{-- <select name="player_type" id="player_type" class="form-control custom-select">
                 @foreach($types as $index => $type) {
                 <option {{$index == old('player_type') ? 'selected' : ''}} value="{{$index}}">{{$type}}</option>

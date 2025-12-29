@@ -52,7 +52,13 @@ class GameController extends Controller
             "strategy" => "fa-solid fa-chess-pawn",
             "adventure" => "fa-solid fa-map",
             "cozy" => "fa-solid fa-bahai",
-            "shmup" => "fa-brands fa-space-awesome"
+            "shmup" => "fa-brands fa-space-awesome",
+            "rhythm" => "fa-solid fa-person-walking",
+            "tower defense" => "fa-solid fa-tower-observation",
+            "platformer" => "fa-solid fa-layer-group",
+            "fighting" => "fa-solid fa-people-pulling",
+            "relaxing" => "fa-solid fa-couch",
+            "shooting" => "fa-solid fa-gun"
         ];
        
 
